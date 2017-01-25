@@ -10,54 +10,82 @@
   <body>
     <div class="container">
       <div class="row">
-        <section id="content" class="col-md-12"></section>
+        <section id="graph_onTime" class="col-md-12"></section>
+      </div>
+      <div class="row">
+        <section id="graph_arrivals" class="col-md-12"></section>
       </div>
     </div>
     <script type = "text/javascript">
-    d3.csv("data_airline.csv", function(d) {
+    d3.csv("data/data_airline.csv", function(d) {
       var format = d3.time.format("%m");
       return {
         'Month': format.parse(d['X.month']),
-        'Carrier Name': d.carrier_name,
-        'On Time': +d.on_time,
-        'Arrivals': +d.arrivals
+        'Carrier Name': d['carrier_name'],
+        'On Time': +d['on_time'],
+        'Arrivals': +d['arrivals']
       };
       }, function(data) {
       'use strict';
 
       // append title
-      d3.select('#content')
+      d3.select('#graph_onTime')
         .append('h2')
         .attr('id', 'title')
-        .text('On-Time Arrival Rates for Top U.S. Domestic Airlines, 2003-2014');
+        .text('Top U.S. Domestic Airlines On-Time Arrivals by Months, 2003-2014');
+
+      d3.select('#graph_arrivals')
+        .append('h2')
+        .attr('id', 'title')
+        .text('Top U.S. Domestic Airlines Total Arrivals by Months, 2003-2014');
 
       // set svg
-      var width = 960,
-          height = 640;
-      var svg = dimple.newSvg('#content', width, height);
-      var myChart = new dimple.chart(svg, data);
+      var width = 900,
+          height = 600;
+      var svg = dimple.newSvg('#graph_onTime', width, height);
+      var svg2 = dimple.newSvg('#graph_arrivals', width, height);
+      var Chart_OnTime = new dimple.chart(svg, data);
+      var Chart_Arrival = new dimple.chart(svg2, data);
 
       // set y axis
       var minY = 0.70,
-          maxY = 1;
-      var y = myChart.addMeasureAxis('y', 'On Time');
+          maxY = 0.90;
+      var y = Chart_OnTime.addMeasureAxis('y', 'On Time');
       y.tickFormat = '%';
       y.overrideMin = minY;
       y.overrideMax = maxY;
-      y.title = 'Percentage of Arrivals on Time (within 15 minutes)';
+      y.title = 'Percentage of Arrivals on Time';
+
+      var count_arrival = d3.extent(data,function(d){
+        return d['Arrivals'];
+      })
+      var y_2 = Chart_Arrival.addMeasureAxis('y', 'Arrivals');
+      y_2.tickFormat = ' ';
+      y_2.overrideMin = 0;
+      y_2.overrideMax = count_arrival[1]*4;
+      y_2.title = 'Total Arrivals';
+
 
       // set x axis
-      var x = myChart.addTimeAxis('x', 'Month');
+      var x = Chart_OnTime.addTimeAxis('x', 'Month');
       x.tickFormat = '%m';
       x.title = 'Month';
 
+      var x_2 = Chart_Arrival.addTimeAxis('x', 'Month');
+      x_2.tickFormat = '%m';
+      x_2.title = 'Month';
+
       // set series and legend
-      var s = myChart.addSeries('Carrier Name', dimple.plot.scatter);
-      var p = myChart.addSeries('Carrier Name', dimple.plot.line);
-      var legend = myChart.addLegend(width*0.65, 60, width*0.25, 60, 'right');
+      var s = Chart_OnTime.addSeries('Carrier Name', dimple.plot.scatter);
+      var p = Chart_OnTime.addSeries('Carrier Name', dimple.plot.line);
+      var legend = Chart_OnTime.addLegend(width*0.65, 60, width*0.25, 60, 'right');
+
+      var s_2 = Chart_Arrival.addSeries('Carrier Name', dimple.plot.bar);
+      var legend_2 = Chart_Arrival.addLegend(width*0.65, 60, width*0.25, 60, 'right');
 
       // draw
-      myChart.draw();
+      Chart_OnTime.draw();
+      Chart_Arrival.draw();
 
       // handle mouse events on gridlines
       y.gridlineShapes.selectAll('line')
@@ -75,7 +103,7 @@
         .style('opacity', 0.25)
         .on('mouseover', function(e) {
           d3.select(this)
-            .style('stroke-width', '8px')
+            .style('stroke-width', '4px')
             .style('opacity', 1)
             .attr('z-index', '1');
       }).on('mouseleave', function(e) {
