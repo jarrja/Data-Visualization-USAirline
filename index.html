@@ -83,9 +83,12 @@
       var s_2 = Chart_Arrival.addSeries('Carrier Name', dimple.plot.bar);
       var legend_2 = Chart_Arrival.addLegend(width*0.65, 60, width*0.25, 60, 'right');
 
+
       // draw
       Chart_OnTime.draw();
       Chart_Arrival.draw();
+      // Change size of bar chart
+      d3.selectAll('.dimple-bar').attr('width',50);
 
       // handle mouse events on gridlines
       y.gridlineShapes.selectAll('line')
