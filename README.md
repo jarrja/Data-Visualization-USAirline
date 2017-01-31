@@ -11,6 +11,15 @@ Approximately 27 carriers are contained in the dataset, where only top 5
 are shown. The top U.S. flights are determined by the total number of flight arrivals
 or in other words, highest amount of flights.
 
+The exploration of the graph provides interesting findings. We can see that the
+carrier that has the highest On-Time arrivals feature is SkyWest Airlines, where
+the poorest airline is American Airlines, which is quite surprising. Another interesting
+finding is the drops of every airlines performance during months 6-8 including
+month 12. This finding might be correlated to the traveling seasons where more
+passengers are traveling (which most of the time, the more people in the plane
+the more delay you get) and also might be about weather. These assumptions require
+more data exploratory phases and validation.
+
 ## Data Visualization
 The plot represents the On-Time arrival of the top 5 carriers. On-Time feature is
 calculated by using on-time arrival divided by total arrival where the percentage

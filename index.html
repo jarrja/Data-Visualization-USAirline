@@ -78,11 +78,10 @@
       // set series and legend
       var s = Chart_OnTime.addSeries('Carrier Name', dimple.plot.scatter);
       var p = Chart_OnTime.addSeries('Carrier Name', dimple.plot.line);
-      var legend = Chart_OnTime.addLegend(width*0.65, 60, width*0.25, 60, 'right');
+      var legend = Chart_OnTime.addLegend(width*0.65, 80, width*0.20, 60, 'right');
 
       var s_2 = Chart_Arrival.addSeries('Carrier Name', dimple.plot.bar);
-      var legend_2 = Chart_Arrival.addLegend(width*0.65, 60, width*0.25, 60, 'right');
-
+      var legend_2 = Chart_Arrival.addLegend(width*0.65, 60, width*0.20, 60, 'right');
 
       // draw
       Chart_OnTime.draw();
