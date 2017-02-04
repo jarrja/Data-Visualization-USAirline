@@ -4,13 +4,14 @@
     <meta charset="utf-8">
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="http://dimplejs.org/dist/dimple.v2.0.0.min.js"></script>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <title> Data Visualization of US Airlines </title>
   </head>
   <body>
     <div class="container">
       <div class="row">
         <section id="graph_onTime" class="col-md-12"></section>
+        <p>  </p>
       </div>
       <div class="row">
         <section id="graph_arrivals" class="col-md-12"></section>
@@ -32,7 +33,10 @@
       d3.select('#graph_onTime')
         .append('h2')
         .attr('id', 'title')
-        .text('Top U.S. Domestic Airlines On-Time Arrivals by Months, 2003-2014');
+        .text('Top U.S. Domestic Airlines On-Time Arrivals by Months, 2003-2014')
+        .append('p')
+        .attr('id','explanation')
+        .text('The visualization shows the drop of performance during June - August and starts to improve after August');
 
       d3.select('#graph_arrivals')
         .append('h2')
