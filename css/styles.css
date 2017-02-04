@@ -1,0 +1,15 @@
+h1 {
+  color: black;
+  text-align: left;
+}
+
+p {
+  font-size: 18px;
+}
+
+#title {
+  color: black;
+  text-align: left;
+  padding: 5px;
+  margin-left: 60px
+}
