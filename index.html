@@ -85,6 +85,8 @@
       x_2.tickFormat = '%m';
       x_2.title = 'Month';
 
+
+
       // set series and legend
       var s = Chart_OnTime.addSeries('Carrier Name', dimple.plot.scatter);
       var p = Chart_OnTime.addSeries('Carrier Name', dimple.plot.line);
@@ -115,6 +117,13 @@
 
       // Change size of bar chart
       d3.selectAll('.dimple-bar').attr('width',50);
+
+      //Adjust tick for graph 2
+      d3.select('#graph_arrivals').selectAll('.dimple-axis:nth-child(4)').attr("transform",
+        function (d) {
+          return d3.select(this).attr("transform") + " translate(20, 0)";
+        });
+
 
       // handle mouse events on gridlines
       y.gridlineShapes.selectAll('line')
