@@ -93,9 +93,26 @@
       var s_2 = Chart_Arrival.addSeries('Carrier Name', dimple.plot.bar);
       var legend_2 = Chart_Arrival.addLegend(width*0.65, 60, width*0.20, 60, 'right');
 
+      //Set Color for Chart On Time
+      Chart_OnTime.assignColor("Delta Air Lines Inc.", "#FF7575");
+      Chart_OnTime.assignColor("SkyWest Airlines Inc.", "#2897B7");
+      Chart_OnTime.assignColor("Southwest Airlines Co.", "#F7DE00");
+      Chart_OnTime.assignColor("United Air Lines Inc.", "#DFE32D");
+      Chart_OnTime.assignColor("American Airlines Inc.", "#FF9C42");
+
+      //Set Color for Chart Arrivals
+      Chart_Arrival.assignColor("Delta Air Lines Inc.", "#FF7575");
+      Chart_Arrival.assignColor("SkyWest Airlines Inc.", "#2897B7");
+      Chart_Arrival.assignColor("Southwest Airlines Co.", "#F7DE00");
+      Chart_Arrival.assignColor("United Air Lines Inc.", "#DFE32D");
+      Chart_Arrival.assignColor("American Airlines Inc.", "#FF9C42");
+
       // draw
       Chart_OnTime.draw();
       Chart_Arrival.draw();
+
+
+
       // Change size of bar chart
       d3.selectAll('.dimple-bar').attr('width',50);
 
