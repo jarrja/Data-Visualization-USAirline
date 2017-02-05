@@ -25,9 +25,16 @@ The plot represents the On-Time arrival of the top 5 carriers to provide a clear
 visualization with out crowding the graph. On-Time feature is
 calculated by using on-time arrival divided by total arrival where the percentage
 of On-Time is obtained. We will use this index to identify which carriers perform best
-in different time of the month. Line plot is chosen to show the On-Time arrival
+in different time of the month.
+
+### Design Selection
+Line plot is chosen to show the On-Time arrival
 feature to provide a link and progress between each individual month, where
 bar plot is perfect to show the proportion between each airline in a single month.
+
+The color representing each data is critical where it guides the user to delineates
+between each airline easily, therefore, the colors for each airline is selected to
+be the same.
 
 ## Feedback
 #### Feedback 1
