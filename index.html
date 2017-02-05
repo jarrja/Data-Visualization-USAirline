@@ -36,12 +36,18 @@
         .text('Top U.S. Domestic Airlines On-Time Arrivals by Months, 2003-2014')
         .append('p')
         .attr('id','explanation')
-        .text('The visualization shows the drop of performance during June - August and starts to improve after August');
+        .text('The visualization shows the drop of performance during June - August and starts to improve after August')
+        .append('p')
+        .attr('id','explanation')
+        .text('Skywest shows promising performance where American Airlines falls behind');
 
       d3.select('#graph_arrivals')
         .append('h2')
         .attr('id', 'title')
-        .text('Top U.S. Domestic Airlines Total Arrivals by Months, 2003-2014');
+        .text('Top U.S. Domestic Airlines Total Arrivals by Months, 2003-2014')
+        .append('p')
+        .attr('id','explanation')
+        .text('Southwest shows highest arrivals comparing to others');
 
       // set svg
       var width = 900,
